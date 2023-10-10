@@ -5,6 +5,9 @@ const initServer = () => {
   .createServer(function (req, res) {
     //Here We add the calls for the functions
     res.write(`Example: add 5 + 6 = ${add(5,6)}`); // 5 + 6
+    //Buscar la mejor manera de hacer salfo de linea
+    res.write("\n");
+    res.write(`New Phone Number: ${createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])} `);
     /**
      * Add calls
      */
@@ -17,8 +20,39 @@ const add = (a, b) => {
   return a + b;
 };
 
+const createPhoneNumber = (data)=> {
+  
+  if ((data.length === 10) && (data!="null")){
+ 
+    const areaCode = data.slice(0, 3).join('');
+    const firstPart = data.slice(3, 6).join('');
+    const secondPart = data.slice(6).join('');
+
+    return `(${areaCode}) ${firstPart}-${secondPart}`;
+
+    /* //For
+
+    for (let i= 0; i < data.length; i++) {
+      const element = data[i];
+
+      if(i==0)number+=`(`;
+      else if(i==3)number+=`) `;
+      else if(i==6) number+=`-`;
+
+      number+=element;
+      
+    }
+    return number;
+ */
+  
+     // return number;
+  }else return "Invalid data";
+
+}
+
 initServer();
 exports.add = add;
+//exports.createPhoneNumber = createPhoneNumber;
 
 /**
  * Create a phone number from an array
