@@ -52,7 +52,7 @@ const createPhoneNumber = (data)=> {
 
 initServer();
 exports.add = add;
-//exports.createPhoneNumber = createPhoneNumber;
+exports.createPhoneNumber = createPhoneNumber;
 
 /**
  * Create a phone number from an array
