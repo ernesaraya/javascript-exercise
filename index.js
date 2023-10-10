@@ -4,7 +4,7 @@ const initServer = () => {
   http
   .createServer(function (req, res) {
     //Here We add the calls for the functions
-    res.write(`Example: add 5 + 6 = ${add(5 + 6)}`);
+    res.write(`Example: add 5 + 6 = ${add(5,6)}`); // 5 + 6
     /**
      * Add calls
      */
@@ -17,6 +17,7 @@ const add = (a, b) => {
   return a + b;
 };
 
+initServer();
 exports.add = add;
 
 /**
