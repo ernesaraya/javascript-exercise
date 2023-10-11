@@ -4,13 +4,16 @@ const initServer = () => {
   http
   .createServer(function (req, res) {
     //Here We add the calls for the functions
+    
     res.write(`Example: add 5 + 6 = ${add(5,6)}`); // 5 + 6
     //Buscar la mejor manera de hacer salfo de linea
     res.write("\n");
-    res.write(`New Phone Number: ${createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])} `);
+    res.write(`New Phone Number: ${createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])}`);
+    //res.write(`New Phone Number: ${createPhoneNumber([5, 0, 6, 8, 3, 0, 6, 5, 5, 8, 4])}`);
     /**
      * Add calls
      */
+    
     res.end(); //end the response
   })
   .listen(8080); //the server object listens on port 8080
@@ -20,34 +23,15 @@ const add = (a, b) => {
   return a + b;
 };
 
-const createPhoneNumber = (data)=> {
+const createPhoneNumber = (data)=> { // With ExpReg
   
-  if ((data.length === 10) && (data!="null")){
+  if((data.length >= 10) && (data!="null")){
  
-    const areaCode = data.slice(0, 3).join('');
-    const firstPart = data.slice(3, 6).join('');
-    const secondPart = data.slice(6).join('');
-
-    return `(${areaCode}) ${firstPart}-${secondPart}`;
-
-    /* //For
-
-    for (let i= 0; i < data.length; i++) {
-      const element = data[i];
-
-      if(i==0)number+=`(`;
-      else if(i==3)number+=`) `;
-      else if(i==6) number+=`-`;
-
-      number+=element;
-      
-    }
-    return number;
- */
-  
-     // return number;
-  }else return "Invalid data";
-
+    const phoneNumberString = data.join('');
+    return phoneNumberString.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+        
+  } 
+  else return "Invalid data";
 }
 
 initServer();
