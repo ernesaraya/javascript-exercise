@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1696989845955" clover="3.2.0">
-  <project timestamp="1696989845955" name="All files">
+<coverage generated="1696990161943" clover="3.2.0">
+  <project timestamp="1696990161943" name="All files">
     <metrics statements="17" coveredstatements="12" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3" elements="25" coveredelements="18" complexity="0" loc="17" ncloc="17" packages="1" files="1" classes="1"/>
     <file name="index.js" path="C:\Proyectos\ejercicio\javascript-exercise\index.js">
       <metrics statements="17" coveredstatements="12" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3"/>
