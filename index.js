@@ -12,6 +12,9 @@ const initServer = () => {
     res.write(`New Phone Number: ${createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])}`);
     res.write("\n");
     res.write(`The new Array: ${objToArray({ a: 1, b: 2, d: 5 })}`);
+    res.write("\n");
+    //res.write(`Days between: ${getDays(new Date("01/01/2022"),new Date("December 24, 2022") )}`);
+    res.write(`Days between: ${getDays(new Date("June 14, 2019"),new Date("June 20, 2019") )}`);
    
     //res.write(`New Phone Number: ${createPhoneNumber([5, 0, 6, 8, 3, 0, 6, 5, 5, 8, 4])}`);
     /**
@@ -54,11 +57,20 @@ const objToArray = (obj) => {
 
 }
 
+const getDays = (dateI, dateF)=>{
+
+  if((Object.prototype.toString.call(dateI) != "[object Date]")|| (Object.prototype.toString.call(dateF) != "[object Date]")) 
+      return "Invalid Date(s)"
+  else
+      return parseInt((dateF - dateI) / (1000 * 60 * 60 * 24)); 
+  };
+
 initServer();
 exports.initServer = initServer;
 exports.add = add;
 exports.createPhoneNumber = createPhoneNumber;
 exports.objToArray = objToArray;
+exports.getDays = getDays;
 
 /**
  * Create a phone number from an array

@@ -34,6 +34,15 @@ beforeAll(()=> {
     expect(result).toStrictEqual(expected);
     
   });
+
+  test('Get day between dates', async () => {
+    const expected = 6;
+    const result = functions.getDays(new Date("June 14, 2019"),new Date("June 20, 2019"));
+    expect(result).toStrictEqual(expected);
+    
+  });
+
+
   
 
 

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75.86% </span>
+                <span class="strong">72.22% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/29</span>
+                <span class='fraction'>26/36</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">70% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>7/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75.86% </span>
+                <span class="strong">72.22% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>22/29</span>
+                <span class='fraction'>26/36</span>
             </div>
         
             
@@ -190,7 +190,20 @@
 <a name='L125'></a><a href='#L125'>125</a>
 <a name='L126'></a><a href='#L126'>126</a>
 <a name='L127'></a><a href='#L127'>127</a>
-<a name='L128'></a><a href='#L128'>128</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -203,6 +216,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -246,6 +262,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -331,6 +357,9 @@ const initServer = () =&gt; {
 <span class="cstat-no" title="statement not covered" >    res.write(`New Phone Number: ${createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])}`);</span>
 <span class="cstat-no" title="statement not covered" >    res.write("\n");</span>
 <span class="cstat-no" title="statement not covered" >    res.write(`The new Array: ${objToArray({ a: 1, b: 2, d: 5 })}`);</span>
+<span class="cstat-no" title="statement not covered" >    res.write("\n");</span>
+    //res.write(`Days between: ${getDays(new Date("01/01/2022"),new Date("December 24, 2022") )}`);
+<span class="cstat-no" title="statement not covered" >    res.write(`Days between: ${getDays(new Date("June 14, 2019"),new Date("June 20, 2019") )}`);</span>
    
     //res.write(`New Phone Number: ${createPhoneNumber([5, 0, 6, 8, 3, 0, 6, 5, 5, 8, 4])}`);
     /**
@@ -373,11 +402,21 @@ const objToArray = (obj) =&gt; {
 &nbsp;
 }
 &nbsp;
+&nbsp;
+const getDays = (dateI, dateF)=&gt;{
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if((Object.prototype.toString.call(dateI) != "[object Date]")|| (Object.prototype.toString.call(dateF) != "[object Date]")) 
+<span class="cstat-no" title="statement not covered" >      return "Invalid Date(s)"</span>
+  else
+      return parseInt((dateF - dateI) / (1000 * 60 * 60 * 24)); 
+  };
+&nbsp;
 initServer();
 exports.initServer = initServer;
 exports.add = add;
 exports.createPhoneNumber = createPhoneNumber;
 exports.objToArray = objToArray;
+exports.getDays = getDays;
 &nbsp;
 /**
  * Create a phone number from an array
@@ -451,7 +490,7 @@ exports.objToArray = objToArray;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-13T19:05:06.370Z
+                at 2023-10-13T20:12:03.405Z
             </div>
         <script src="prettify.js"></script>
         <script>
