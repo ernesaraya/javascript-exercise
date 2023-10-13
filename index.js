@@ -19,9 +19,11 @@ const initServer = () => {
      */
     
     res.end(); //end the response
+    
   })
-  .listen(8080); //the server object listens on port 8080
+  .listen(8080)//the server object listens on port 8080
 };
+  
 
 const add = (a, b) => {
   return a + b;
@@ -53,6 +55,7 @@ const objToArray = (obj) => {
 }
 
 initServer();
+exports.initServer = initServer;
 exports.add = add;
 exports.createPhoneNumber = createPhoneNumber;
 exports.objToArray = objToArray;

@@ -1,26 +1,43 @@
 const functions = require("../index");
+var http = require("http");
+var server;
 
-test("Addition", async () => {
-  const expected = 5;
-  const result = functions.add(2, 3);
-  expect(result).toBe(expected);
+beforeAll(()=> {
+  server = http.createServer((req, res) => {
+      res.write('ok');
+      res.end();
+  });
+  server.listen(()=>{
+    console.log("Test Servesr Up");  
+    
+  });
 });
 
-test('CreatePhoneNumber', async () => {
-  const expected = "(123) 456-7890";
-  const result = functions.createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
-  expect(result).toBe(expected);
+
+  test("Addition", async () => {
+    const expected = 5;
+    const result = functions.add(2, 3);
+    expect(result).toBe(expected);
+  });
   
-});
-
-
-test('Convert object to Array', async () => {
-  const expected = [ [ 'a', 1 ], [ 'b', 2 ], [ 'd', 5 ] ];
-  const result = functions.objToArray({ a: 1, b: 2, d: 5 });
-  expect(result).toStrictEqual(expected);
+  test('CreatePhoneNumber', async () => {
+    const expected = "(123) 456-7890";
+    const result =  functions.createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+    expect(result).toBe(expected);
+    
+  });
   
+  
+  test('Convert object to Array', async () => {
+    const expected = [ [ 'a', 1 ], [ 'b', 2 ], [ 'd', 5 ] ];
+    const result = functions.objToArray({ a: 1, b: 2, d: 5 });
+    expect(result).toStrictEqual(expected);
+    
+  });
+  
+
+
+afterAll(done => {
+    server.close(done);
 });
 
-afterAll(async() => {
-    functions.close();
-});
