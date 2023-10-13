@@ -12,3 +12,15 @@ test('CreatePhoneNumber', async () => {
   expect(result).toBe(expected);
   
 });
+
+
+test('Convert object to Array', async () => {
+  const expected = [ [ 'a', 1 ], [ 'b', 2 ], [ 'd', 5 ] ];
+  const result = functions.objToArray({ a: 1, b: 2, d: 5 });
+  expect(result).toStrictEqual(expected);
+  
+});
+
+afterAll(async() => {
+    functions.close();
+});

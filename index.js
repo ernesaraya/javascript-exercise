@@ -1,4 +1,5 @@
 var http = require("http");
+const { constrainedMemory } = require("process");
 
 const initServer = () => {
   http
@@ -9,6 +10,9 @@ const initServer = () => {
     //Buscar la mejor manera de hacer salfo de linea
     res.write("\n");
     res.write(`New Phone Number: ${createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])}`);
+    res.write("\n");
+    res.write(`The new Array: ${objToArray({ a: 1, b: 2, d: 5 })}`);
+   
     //res.write(`New Phone Number: ${createPhoneNumber([5, 0, 6, 8, 3, 0, 6, 5, 5, 8, 4])}`);
     /**
      * Add calls
@@ -34,9 +38,24 @@ const createPhoneNumber = (data)=> { // With ExpReg
   else return "Invalid data";
 }
 
+const objToArray = (obj) => {
+
+ let newArray = [];
+  
+ for (const key in obj) {
+  if (Object.hasOwnProperty.call(obj,key)) {
+      const pair = new Array(key,obj[key]);
+      newArray.push(pair);
+  }
+ }
+ return newArray;
+
+}
+
 initServer();
 exports.add = add;
 exports.createPhoneNumber = createPhoneNumber;
+exports.objToArray = objToArray;
 
 /**
  * Create a phone number from an array
