@@ -1,3 +1,4 @@
+const { placeholder } = require("@babel/types");
 var http = require("http");
 const { constrainedMemory } = require("process");
 
@@ -15,7 +16,10 @@ const initServer = () => {
     res.write("\n");
     //res.write(`Days between: ${getDays(new Date("01/01/2022"),new Date("December 24, 2022") )}`);
     res.write(`Days between: ${getDays(new Date("June 14, 2019"),new Date("June 20, 2019") )}`);
+    res.write("\n");
    
+    
+    res.write(`Total: ${getTotalPrice([{product: "Milk", quantity: 1, price: 1.50  },{ product: "Cereals", quantity: 1, price: 2.50 }])}`);
     //res.write(`New Phone Number: ${createPhoneNumber([5, 0, 6, 8, 3, 0, 6, 5, 5, 8, 4])}`);
     /**
      * Add calls
@@ -63,6 +67,18 @@ const getDays = (dateI, dateF)=>{
       return "Invalid Date(s)"
   else
       return parseInt((dateF - dateI) / (1000 * 60 * 60 * 24)); 
+  };
+
+  
+
+  const getTotalPrice = (products)=>{
+    
+    let total = 0.00;
+
+    for (let index = 0; index < products.length; index++) {
+       total += (products[index].quantity *  products[index].price);
+    } 
+    return total;
   };
 
 initServer();
