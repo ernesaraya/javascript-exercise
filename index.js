@@ -1,6 +1,6 @@
-const { placeholder } = require("@babel/types");
+//const { placeholder } = require("@babel/types");
 var http = require("http");
-const { constrainedMemory } = require("process");
+//const { constrainedMemory } = require("process");
 
 const initServer = () => {
   http
@@ -87,6 +87,7 @@ exports.add = add;
 exports.createPhoneNumber = createPhoneNumber;
 exports.objToArray = objToArray;
 exports.getDays = getDays;
+exports.getTotalPrice = getTotalPrice;
 
 /**
  * Create a phone number from an array

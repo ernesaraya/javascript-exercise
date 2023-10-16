@@ -42,6 +42,13 @@ beforeAll(()=> {
     
   });
 
+  test('Get total price groceries', async () => {
+    const expected = 6.50;
+    const result = functions.getTotalPrice([{product: "Milk", quantity: 1, price: 1.50  },{ product: "Cereals", quantity: 2, price: 2.50 }]);
+    expect(result).toStrictEqual(expected);
+    
+  });
+
 
   
 
