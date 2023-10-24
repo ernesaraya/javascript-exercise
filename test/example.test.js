@@ -1,7 +1,7 @@
 const functions = require("../index");
 var http = require("http");
 var server;
-
+/* 
 beforeAll(()=> {
   server = http.createServer((req, res) => {
       res.write('ok');
@@ -11,7 +11,7 @@ beforeAll(()=> {
     console.log("Test Servesr Up");  
     
   });
-});
+}); */
 
 
   test("Addition", async () => {
@@ -49,11 +49,34 @@ beforeAll(()=> {
     
   });
 
-
+  test('Get a Decompose Url', async () => {
+    
+  const  objExpected = new Object ( {
+      
+    protocol: "https:",
+    ipAdress: null,
+    subDomain: "www",
+    domainName: "www.google.com",
+    folderTree: [
+        "search"
+    ],
+    targetFile: "test.js",
+    argumentFiles: "?ok=1"
+  });
+    
+  const objResult = functions.decomposeUrl("https://www.google.com/search/test.js?ok=1");
+  expect(objResult).toStrictEqual(objExpected);
   
 
 
+    
+  });
+
+
+  
+
+/* 
 afterAll(done => {
     server.close(done);
 });
-
+ */

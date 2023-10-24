@@ -1,5 +1,6 @@
 //const { placeholder } = require("@babel/types");
 var http = require("http");
+
 //const { constrainedMemory } = require("process");
 
 const initServer = () => {
@@ -17,9 +18,10 @@ const initServer = () => {
     //res.write(`Days between: ${getDays(new Date("01/01/2022"),new Date("December 24, 2022") )}`);
     res.write(`Days between: ${getDays(new Date("June 14, 2019"),new Date("June 20, 2019") )}`);
     res.write("\n");
-   
-    
     res.write(`Total: ${getTotalPrice([{product: "Milk", quantity: 1, price: 1.50  },{ product: "Cereals", quantity: 1, price: 2.50 }])}`);
+    res.write("\n");
+    res.write(`The decompose url: ${JSON.stringify(decomposeUrl("https://www.google.com/search/test.js?ok=1"),null,4)}`);
+    //res.write(`The decompose url: ${decomposeUrl("192.168.2.1")}`);
     //res.write(`New Phone Number: ${createPhoneNumber([5, 0, 6, 8, 3, 0, 6, 5, 5, 8, 4])}`);
     /**
      * Add calls
@@ -69,8 +71,7 @@ const getDays = (dateI, dateF)=>{
       return parseInt((dateF - dateI) / (1000 * 60 * 60 * 24)); 
   };
 
-  
-
+ 
   const getTotalPrice = (products)=>{
     
     let total = 0.00;
@@ -81,6 +82,56 @@ const getDays = (dateI, dateF)=>{
     return total;
   };
 
+  const decomposeUrl = (urlString)=> {
+    
+  let obj = new Object;
+
+ 
+  try {
+
+      const url =  new URL(urlString);  
+      obj.protocol =  url.protocol.toString();
+      obj.ipAdress =  urlString.match(/^((https?:\/\/)|(www.))(?:([a-zA-Z]+)|(\d+\.\d+.\d+.\d+)):\d{4}$/);
+  
+      if (obj.ipAdress == null){
+        
+        obj.subDomain = url.host.split('.')[0]; 
+        obj.domainName = url.hostname;
+      }
+      else
+      {
+        obj.subDomain = null; 
+        obj.domainName = null
+      }
+
+      const folderSchemes = () =>{
+  
+        const array = new Array();
+        const pathNameLgt = url.pathname.split('/').length;
+  
+        if (pathNameLgt > 2){
+            for (let index = 1; index < pathNameLgt-1; index++) {
+              array.push( url.pathname.split('/')[index]);
+            }  
+            return array;
+        }else{
+            return null;
+       }
+     } 
+  
+    obj.folderTree = folderSchemes();
+    obj.targetFile = url.pathname.split('/')[url.pathname.split('/').length-1];
+    obj.argumentFiles = url.search;
+  
+    return obj;
+      
+    }catch (error) {
+       return  error; 
+    }
+    
+  }
+
+
 initServer();
 exports.initServer = initServer;
 exports.add = add;
@@ -88,6 +139,7 @@ exports.createPhoneNumber = createPhoneNumber;
 exports.objToArray = objToArray;
 exports.getDays = getDays;
 exports.getTotalPrice = getTotalPrice;
+exports.decomposeUrl = decomposeUrl;
 
 /**
  * Create a phone number from an array
