@@ -21,6 +21,8 @@ const initServer = () => {
     res.write(`Total: ${getTotalPrice([{product: "Milk", quantity: 1, price: 1.50  },{ product: "Cereals", quantity: 1, price: 2.50 }])}`);
     res.write("\n");
     res.write(`The decompose url: ${JSON.stringify(decomposeUrl("https://www.google.com/search/test.js?ok=1"),null,4)}`);
+    res.write("\n");
+    res.write(`Repeated number counting: ${JSON.stringify(countRepitions([1, 5, 5, 5, 12, 12, 0, 0, 0, 0, 0, 0]))}`);
     //res.write(`The decompose url: ${decomposeUrl("192.168.2.1")}`);
     //res.write(`New Phone Number: ${createPhoneNumber([5, 0, 6, 8, 3, 0, 6, 5, 5, 8, 4])}`);
     /**
@@ -131,6 +133,36 @@ const getDays = (dateI, dateF)=>{
     
   }
 
+  const countRepitions = (numArray) =>{
+
+    let obj = new Object;
+    
+    for (let i = 0;i < numArray.length; i++) {
+      const element = numArray[i];
+
+      for (let j=i; j<numArray.length;j++)
+      {
+          if (element == numArray[j]){
+              let temp = obj.element;
+              obj[element] = 0;
+          }
+      }
+    }
+
+      for (const key in obj) {
+        if (Object.hasOwnProperty.call(obj, key)) {
+              
+            numArray.forEach(element => {
+                  if ( key == element ){
+                    obj[key] += 1;
+                  }
+            });
+    
+        }
+ 
+    }
+      return obj;
+  };
 
 initServer();
 exports.initServer = initServer;
@@ -140,6 +172,7 @@ exports.objToArray = objToArray;
 exports.getDays = getDays;
 exports.getTotalPrice = getTotalPrice;
 exports.decomposeUrl = decomposeUrl;
+exports.countRepitions = countRepitions;
 
 /**
  * Create a phone number from an array

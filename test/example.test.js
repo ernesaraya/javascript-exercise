@@ -72,6 +72,12 @@ beforeAll(()=> {
     
   });
 
+  test('Get a repeated number counting', async () => {
+    const objExpected = { 0: 6, 1: 1, 5: 3, 12: 2 };
+    const objResult = functions.countRepitions([1, 5, 5, 5, 12, 12, 0, 0, 0, 0, 0, 0]);
+    expect(objResult).toStrictEqual(objExpected);
+    
+  });
 
   
 
