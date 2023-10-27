@@ -1,18 +1,4 @@
 const functions = require("../index");
-var http = require("http");
-var server;
-/* 
-beforeAll(()=> {
-  server = http.createServer((req, res) => {
-      res.write('ok');
-      res.end();
-  });
-  server.listen(()=>{
-    console.log("Test Servesr Up");  
-    
-  });
-}); */
-
 
   test("Addition", async () => {
     const expected = 5;
@@ -81,8 +67,4 @@ beforeAll(()=> {
 
   
 
-/* 
-afterAll(done => {
-    server.close(done);
-});
- */
+

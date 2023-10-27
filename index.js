@@ -1,7 +1,5 @@
-//const { placeholder } = require("@babel/types");
-var http = require("http");
 
-//const { constrainedMemory } = require("process");
+var http = require("http");
 
 const initServer = () => {
   http
@@ -15,7 +13,6 @@ const initServer = () => {
     res.write("\n");
     res.write(`The new Array: ${objToArray({ a: 1, b: 2, d: 5 })}`);
     res.write("\n");
-    //res.write(`Days between: ${getDays(new Date("01/01/2022"),new Date("December 24, 2022") )}`);
     res.write(`Days between: ${getDays(new Date("June 14, 2019"),new Date("June 20, 2019") )}`);
     res.write("\n");
     res.write(`Total: ${getTotalPrice([{product: "Milk", quantity: 1, price: 1.50  },{ product: "Cereals", quantity: 1, price: 2.50 }])}`);
@@ -23,8 +20,6 @@ const initServer = () => {
     res.write(`The decompose url: ${JSON.stringify(decomposeUrl("https://www.google.com/search/test.js?ok=1"),null,4)}`);
     res.write("\n");
     res.write(`Repeated number counting: ${JSON.stringify(countRepitions([1, 5, 5, 5, 12, 12, 0, 0, 0, 0, 0, 0]))}`);
-    //res.write(`The decompose url: ${decomposeUrl("192.168.2.1")}`);
-    //res.write(`New Phone Number: ${createPhoneNumber([5, 0, 6, 8, 3, 0, 6, 5, 5, 8, 4])}`);
     /**
      * Add calls
      */
